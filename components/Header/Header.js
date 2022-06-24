@@ -1,8 +1,5 @@
-import React, {
-  useEffect,
-  useState
-} from 'react'
-import Link from 'next/link'
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import {
   Box,
   Button,
@@ -17,36 +14,39 @@ import {
   ModalCloseButton,
   Text,
   useDisclosure,
-} from '@chakra-ui/core'
-import { RiSearchLine, RiTwitterLine } from 'react-icons/ri'
-import { useWindowScroll } from 'react-use'
-import { useScrollPosition } from '@n8tb1t/use-scroll-position'
-import Container from '../Container'
-import RoundedButton from '../RoundedButton'
-import About from '../../pages/about'
+} from "@chakra-ui/core";
+import { RiSearchLine, RiTwitterLine } from "react-icons/ri";
+import { useWindowScroll } from "react-use";
+import { useScrollPosition } from "@n8tb1t/use-scroll-position";
+import Container from "../Container";
+import RoundedButton from "../RoundedButton";
+import About from "../../pages/about";
 
-const HEADER_HEIGHT = 90
+const HEADER_HEIGHT = 90;
 
 const Header = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen, onOpen, onClose } = useDisclosure();
   // const { y } = useWindowScroll()
-  const [isMinified, setIsMinified] = useState(false)
-  const [isVisible, setIsVisible] = useState(true)
+  const [isMinified, setIsMinified] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   useScrollPosition(({ prevPos, currPos }) => {
-
     if (currPos.y > prevPos.y && !isVisible) {
-      setIsVisible(true)
-    } else if (currPos.y <= prevPos.y && currPos.y < -HEADER_HEIGHT && isVisible) {
-      setIsVisible(false)
+      setIsVisible(true);
+    } else if (
+      currPos.y <= prevPos.y &&
+      currPos.y < -HEADER_HEIGHT &&
+      isVisible
+    ) {
+      setIsVisible(false);
     }
 
     if (currPos.y < -HEADER_HEIGHT && !isMinified) {
-      setIsMinified(true)
+      setIsMinified(true);
     } else if (currPos.y >= -HEADER_HEIGHT && isMinified) {
-      setIsMinified(false)
+      setIsMinified(false);
     }
-  })
+  });
 
   return (
     <>
@@ -54,10 +54,10 @@ const Header = () => {
         as="header"
         position="fixed"
         zIndex={10}
-        top={isVisible ? 0 : '-9rem'}
+        top={isVisible ? 0 : "-9rem"}
         left={0}
         width="100%"
-        height={isMinified ? '7rem' : '9rem'}
+        height={isMinified ? "7rem" : "9rem"}
         px={[0, 8]}
         bgColor="white"
         transition="all 0.4s cubic-bezier(.08,.52,.52,1)"
@@ -77,23 +77,23 @@ const Header = () => {
               zIndex={1}
               display="inline-block"
               marginBottom="1"
-              fontSize={['2.8rem', '4rem']}
+              fontSize={["2.8rem", "4rem"]}
               fontWeight="black"
               textTransform="uppercase"
               transition="all 0.4s cubic-bezier(.08,.52,.52,1)"
               transformOrigin="center left"
-              transform={isMinified ? 'scale(.7)' : 'scale(1)'}
+              transform={isMinified ? "scale(.7)" : "scale(1)"}
               cursor="pointer"
               _before={{
                 content: `""`,
-                position: 'absolute',
+                position: "absolute",
                 zIndex: -1,
                 bottom: 0,
-                left: '-6px',
-                display: 'block',
-                width: 'calc(100% + 12px)',
-                height: '56%',
-                bg: '#FFFC0B',
+                left: "-6px",
+                display: "block",
+                width: "calc(100% + 12px)",
+                height: "56%",
+                bg: "#FFFC0B",
               }}
             >
               Toy Lovers
@@ -107,40 +107,36 @@ const Header = () => {
               cursor="pointer"
               _before={{
                 content: `""`,
-                position: 'absolute',
+                position: "absolute",
                 zIndex: -1,
                 bottom: 0,
-                left: '-2px',
-                display: 'block',
-                width: 'calc(100% + 4px)',
-                height: '10%',
-                bg: '#FFFC0B',
-                transition: 'height .2s ease'
+                left: "-2px",
+                display: "block",
+                width: "calc(100% + 4px)",
+                height: "10%",
+                bg: "#FFFC0B",
+                transition: "height .2s ease",
               }}
               _hover={{
                 _before: {
-                  height: '56%',
-                }
+                  height: "56%",
+                },
               }}
             >
               About
             </Text>
             <Box
               as="a"
-              href="https://twitter.com/thetoylovers"
+              href="https://twitter.com/vdesdoigts"
               target="_blank"
               pt=".2rem"
               pl="2rem"
               transition="color .2s ease"
               _hover={{
-                color: '#FFFC0B',
+                color: "#FFFC0B",
               }}
             >
-              <Box
-                as={RiTwitterLine}
-                size="2rem"
-                verticalAlign="middle"
-              />
+              <Box as={RiTwitterLine} size="2rem" verticalAlign="middle" />
             </Box>
           </Box>
         </Container>
@@ -156,7 +152,7 @@ const Header = () => {
         </ModalOverlay>
       </Modal>
     </>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
