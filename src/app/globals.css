@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --container-7xl: 105rem; /* 1680px */
+  /* Font variables using Poppins and Georgia */
+  --font-sans: var(--font-poppins), Poppins, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --font-serif: Georgia, "Times New Roman", Times, serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: #2b2b2b;
+  font-family: var(--font-serif);
+}
+
+.c-logo::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  left: -6px;
+  display: block;
+  width: calc(100% + 12px);
+  height: 56%;
+  background: #fffc0b;
+}
+
+.c-title {
+  font-size: calc(1rem + 3.1vw);
+}
+
+.c-image-swiper .swiper.swiper {
+  overflow: visible;
+}
+
+.swiper-left-column::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  background-color: #fff;
+  transform: translateX(-100%);
+}
+
+.c-article .c-article-h2:first-child {
+  margin-top: 0;
+}
+
+.c-article .c-article-body + .c-article-medias-grid,
+.c-article .c-article-body + .c-article-medias-showcase,
+.c-article .c-article-body + .c-article-swiper,
+.c-article .c-article-body + .c-article-video {
+  margin-top: calc(var(--spacing) * 10);
+}
+
+.c-article .c-article-medias-grid + .c-article-body,
+.c-article .c-article-medias-showcase + .c-article-body,
+.c-article .c-article-swiper + .c-article-body,
+.c-article .c-article-video + .c-article-body {
+  margin-top: calc(var(--spacing) * 16);
+
+  @media (min-width: theme("screens.lg")) {
+    margin-top: calc(var(--spacing) * 20);
+  }
+}
+
+.c-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: clamp(24px, 3vw, 64px);
+  background: #222;
+  color: white;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-delay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-up {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out forwards;
+}
+
+.animate-fade-in-delay {
+  animation: fade-in-delay 0.8s ease-out 0.3s forwards;
+  opacity: 0;
+}
+
+.animate-scale-up {
+  animation: scale-up 0.6s ease-out forwards;
+}
