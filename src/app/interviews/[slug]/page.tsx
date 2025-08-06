@@ -1,6 +1,12 @@
 import { TransitionLink } from "@/components/atoms/transition-link/transition-link";
 import { mdxComponents } from "@/components/mdx-components/mdx-components";
 import { getAllArticleSlugs, getArticleBySlug } from "@/lib/mdx";
+import {
+  generateArticleStructuredData,
+  generateBreadcrumbStructuredData,
+  generateImageGalleryStructuredData,
+  generateSEOMetadata,
+} from "@/lib/seo";
 import { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
@@ -24,27 +30,38 @@ export async function generateMetadata({
   const article = getArticleBySlug(slug);
 
   if (!article) {
-    return {
-      title: "Article Not Found | Toy Lovers",
-      description: "The requested article could not be found.",
-    };
+    return generateSEOMetadata({
+      title: "Article Not Found",
+      description:
+        "The requested toy photographer interview could not be found.",
+      url: `/interviews/${slug}`,
+    });
   }
 
-  return {
-    title: `${article.metadata.title} | Toy Lovers`,
-    description: article.metadata.description,
-    openGraph: {
-      title: article.metadata.title,
-      description: article.metadata.description,
-      type: "article",
-      publishedTime: article.metadata.publishedAt,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: article.metadata.title,
-      description: article.metadata.description,
-    },
-  };
+  const { metadata } = article;
+  const featuredImage = metadata.covers?.[0]?.src || "/og-image.jpg";
+  const imageAlt =
+    metadata.covers?.[0]?.alt || `${metadata.title} - Toy Photography`;
+
+  return generateSEOMetadata({
+    title: `${metadata.title} - Toy Photographer Interview`,
+    description: metadata.description,
+    url: `/interviews/${slug}`,
+    image: featuredImage,
+    imageAlt,
+    type: "article",
+    publishedTime: metadata.publishedAt,
+    author: metadata.title,
+    section: "Toy Photography Interviews",
+    tags: [
+      "toy photography interview",
+      metadata.instagram || "",
+      "creative photography",
+      "action figures",
+      "collectibles",
+      "miniature photography",
+    ].filter(Boolean),
+  });
 }
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
@@ -57,8 +74,51 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   const { metadata, content } = article;
 
+  // Generate structured data for the article
+  const articleStructuredData = generateArticleStructuredData(
+    {
+      title: metadata.title,
+      description: metadata.description,
+      publishedAt: metadata.publishedAt,
+      slug,
+      instagram: metadata.instagram,
+      covers: metadata.covers,
+    },
+    content
+  );
+
+  // Generate breadcrumb structured data
+  const breadcrumbData = generateBreadcrumbStructuredData([
+    { name: "Home", url: "/" },
+    { name: "Interviews", url: "/interviews" },
+    { name: metadata.title, url: `/interviews/${slug}` },
+  ]);
+
+  // Generate image gallery structured data if covers exist
+  const imageGalleryData = metadata.covers
+    ? generateImageGalleryStructuredData(metadata.covers, metadata.title)
+    : null;
+
   return (
     <>
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(articleStructuredData),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }}
+      />
+      {imageGalleryData && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(imageGalleryData) }}
+        />
+      )}
+
       {/* Article Content */}
       <article className="c-article min-h-screen bg-white py-12">
         <MDXRemote
@@ -91,7 +151,21 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                 year: "numeric",
                 month: "long",
                 day: "numeric",
-              })}{" "}
+              })}
+              {metadata.instagram && (
+                <>
+                  {" "}
+                  by{" "}
+                  <a
+                    href={`https://instagram.com/${metadata.instagram}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-700 font-medium"
+                  >
+                    @{metadata.instagram}
+                  </a>
+                </>
+              )}
             </div>
             <TransitionLink
               href="/"

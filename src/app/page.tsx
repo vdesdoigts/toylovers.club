@@ -1,8 +1,18 @@
 import { mdxComponents } from "@/components/mdx-components/mdx-components";
 import { getAllArticles } from "@/lib/mdx";
+import { generateSEOMetadata } from "@/lib/seo";
 import { ReactLenis } from "lenis/react";
+import { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypePrettyCode from "rehype-pretty-code";
+
+export const metadata: Metadata = generateSEOMetadata({
+  title: "Home - Showcasing Toy Photography Artists Worldwide",
+  description:
+    "Discover the world's most talented toy photographers through exclusive interviews, stunning galleries, and behind-the-scenes stories. Latest featured artist and photography showcase.",
+  url: "/",
+  type: "website",
+});
 
 export default function Home() {
   const articles = getAllArticles();

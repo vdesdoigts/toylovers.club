@@ -3,21 +3,6 @@
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
 
-// Type definition for the View Transition API
-interface ViewTransition {
-  finished: Promise<void>;
-  ready: Promise<void>;
-  updateCallbackDone: Promise<void>;
-}
-
-declare global {
-  interface Document {
-    startViewTransition?: (
-      updateCallback: () => void | Promise<void>
-    ) => ViewTransition;
-  }
-}
-
 export function useViewTransitions() {
   const router = useRouter();
 
