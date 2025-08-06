@@ -1,8 +1,8 @@
+import { TransitionLink } from "@/components/atoms/transition-link/transition-link";
 import { mdxComponents } from "@/components/mdx-components/mdx-components";
 import { getAllArticleSlugs, getArticleBySlug } from "@/lib/mdx";
 import { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import rehypePrettyCode from "rehype-pretty-code";
 
@@ -93,12 +93,12 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                 day: "numeric",
               })}{" "}
             </div>
-            <Link
-              href="/articles"
-              className="text-sm text-blue-600 hover:text-blue-700 font-medium"
+            <TransitionLink
+              href="/"
+              className="text-sm text-blue-600 hover:text-blue-700 font-medium cursor-pointer"
             >
-              ← Back to all articles
-            </Link>
+              ← Back to home
+            </TransitionLink>
           </div>
         </div>
       </footer>

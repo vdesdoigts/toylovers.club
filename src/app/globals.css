@@ -127,3 +127,99 @@ body {
 .animate-scale-up {
   animation: scale-up 0.6s ease-out forwards;
 }
+
+/* View Transitions */
+/* Ensure view transitions work across different browsers */
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.4s;
+    animation-timing-function: ease-in-out;
+  }
+
+  ::view-transition-old(root) {
+    animation-name: slide-out-right;
+  }
+
+  ::view-transition-new(root) {
+    animation-name: slide-in-left;
+  }
+}
+
+/* Fallback for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.1s;
+    animation-name: fade-out, fade-in-transition;
+  }
+}
+
+/* Slide animations for page transitions */
+@keyframes slide-out-right {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Fade transition for better fallback */
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in-transition {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Custom transitions for specific elements */
+.view-transition-nav {
+  view-transition-name: navigation;
+}
+
+.view-transition-content {
+  view-transition-name: main-content;
+}
+
+::view-transition-old(navigation),
+::view-transition-new(navigation) {
+  animation-duration: 0.2s;
+}
+
+::view-transition-old(main-content),
+::view-transition-new(main-content) {
+  animation-duration: 0.4s;
+}
+
+::view-transition-old(main-content) {
+  animation-name: fade-out;
+}
+
+::view-transition-new(main-content) {
+  animation-name: fade-in-transition;
+}
