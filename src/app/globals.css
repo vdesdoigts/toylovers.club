@@ -133,8 +133,8 @@ body {
 @media (prefers-reduced-motion: no-preference) {
   ::view-transition-old(root),
   ::view-transition-new(root) {
-    animation-duration: 0.4s;
-    animation-timing-function: ease-in-out;
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   ::view-transition-old(root) {
@@ -143,6 +143,11 @@ body {
 
   ::view-transition-new(root) {
     animation-name: slide-in-left;
+  }
+
+  /* Add a smoother transition for content that might be loading */
+  ::view-transition-group(root) {
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 
@@ -213,7 +218,8 @@ body {
 
 ::view-transition-old(main-content),
 ::view-transition-new(main-content) {
-  animation-duration: 0.4s;
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 ::view-transition-old(main-content) {

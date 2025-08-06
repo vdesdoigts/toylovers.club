@@ -14,10 +14,14 @@ export function TransitionLink({
   children,
   className,
 }: TransitionLinkProps) {
-  const { transitionTo } = useViewTransitions();
+  const { transitionTo, preloadRoute } = useViewTransitions();
 
   return (
-    <button onClick={() => transitionTo(href)} className={className}>
+    <button
+      onClick={() => transitionTo(href)}
+      onMouseEnter={() => preloadRoute(href)}
+      className={className}
+    >
       {children}
     </button>
   );

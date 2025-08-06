@@ -11,7 +11,7 @@ interface NavigationLinksProps {
 
 export function NavigationLinks({ articles }: NavigationLinksProps) {
   const pathname = usePathname();
-  const { transitionTo } = useViewTransitions();
+  const { transitionTo, preloadRoute } = useViewTransitions();
 
   // Extract current article slug from pathname
   const currentSlug = pathname.startsWith("/interviews/")
@@ -68,6 +68,7 @@ export function NavigationLinks({ articles }: NavigationLinksProps) {
       {prevHref ? (
         <button
           onClick={() => transitionTo(prevHref)}
+          onMouseEnter={() => preloadRoute(prevHref)}
           className="group flex flex-row items-center gap-1 border-r border-[#212128] px-4 hover:text-white transition-colors duration-300 cursor-pointer"
         >
           <ChevronLeft className="w-5 h-5 text-white group-hover:-translate-x-1 transition-transform duration-300" />
@@ -83,6 +84,7 @@ export function NavigationLinks({ articles }: NavigationLinksProps) {
       {nextHref ? (
         <button
           onClick={() => transitionTo(nextHref)}
+          onMouseEnter={() => preloadRoute(nextHref)}
           className="group flex flex-row items-center gap-1 px-4 py-2 hover:text-white transition-colors duration-300 cursor-pointer"
         >
           Next

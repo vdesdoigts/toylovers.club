@@ -11,8 +11,8 @@ export function InterviewCounter({ articles }: InterviewCounterProps) {
   const pathname = usePathname();
 
   // Extract current article slug from pathname
-  const currentSlug = pathname.startsWith("/articles/")
-    ? pathname.replace("/articles/", "")
+  const currentSlug = pathname.startsWith("/interviews/")
+    ? pathname.replace("/interviews/", "")
     : null;
 
   // Find current article index (1-based for display)
