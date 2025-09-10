@@ -1,0 +1,210 @@
+---
+globs: *.stories.tsx
+alwaysApply: false
+---
+
+--
+
+# Storybook Stories Writing Guidelines
+
+## File Structure and Organization
+
+### Import Structure
+
+- Always import `Meta` and `StoryObj` types from "@storybook/nextjs-vite"
+- Import the component being tested as default import
+- Place all mock components, icons, or helpers at the top after imports
+- Group imports logically: types first, component second, mocks/helpers third
+
+### Mock Components
+
+- Define simple, functional mock components for icons or complex dependencies
+- Use consistent naming pattern ending with "Icon" for icon mocks
+- Keep mock components minimal but functional
+- Use inline SVG with consistent className structure: `className="w-3 h-3"`
+- Include proper viewBox and accessibility attributes
+
+## Meta Configuration
+
+### Meta Object Structure
+
+```typescript
+const meta: Meta<typeof ComponentName> = {
+  title: "Design System/ComponentName",
+  component: ComponentName,
+  parameters: {
+    layout: "centered",
+    docs: {
+      description: {
+        component:
+          "Comprehensive description of the component's purpose and capabilities.",
+      },
+    },
+  },
+  tags: ["autodocs"],
+  argTypes: {
+    // Comprehensive prop definitions
+  },
+};
+```
+
+### ArgTypes Conventions
+
+- Include ALL component props in argTypes
+- Use appropriate control types: "select", "boolean", "text", etc.
+- Provide options array for enum/union props
+- Include helpful description for each prop
+- Match prop names exactly with component interface
+
+## Story Naming and Organization
+
+### Story Names
+
+- Use PascalCase for all story exports
+- Use descriptive, functional names that indicate the story's purpose
+- Follow this progression pattern:
+  1. `Default` - Basic usage
+  2. Individual variants (Primary, Success, Warning, etc.)
+  3. Size variations (Small, Medium, Large)
+  4. State variations (Outlined, WithIcon, etc.)
+  5. Collection stories (AllVariants, AllOutlined, etc.)
+  6. Comparison stories (SizeComparison, StatusIndicators)
+  7. Use case examples (Notifications, Tags)
+  8. Complex realistic scenarios (ComplexExample)
+
+### Story Categories
+
+- **Basic Stories**: Default, individual variants
+- **Variant Collections**: AllVariants, AllOutlined
+- **Size Stories**: Small, Medium, Large, SizeComparison
+- **Feature Stories**: WithIcon, WithDot, Removable
+- **Use Case Stories**: StatusIndicators, Notifications, Tags
+- **Complex Examples**: ComplexExample with realistic scenarios
+
+## Story Implementation
+
+### Basic Stories
+
+- Use simple `args` object for straightforward prop demonstrations
+- Include only necessary props, let others use defaults
+- Focus on single feature/variant per story
+
+### Collection Stories
+
+- Use custom `render` function to showcase multiple variations
+- Wrap in appropriate container (flex, grid, etc.)
+- Include comprehensive coverage of all variants/states
+- Add `parameters.docs.description.story` for context
+
+### Complex Stories
+
+- Create realistic, practical usage scenarios
+- Include multiple related components when applicable
+- Show component in context with proper spacing and layout
+- Use semantic HTML structure with headings and sections
+
+## Documentation Standards
+
+### Component Description
+
+- Provide comprehensive description of component purpose
+- Mention key features: variants, sizes, interactive capabilities
+- Keep description concise but informative
+
+### Story Descriptions
+
+- Add `parameters.docs.description.story` for complex stories
+- Explain the story's purpose and what it demonstrates
+- Provide context for when/how to use the pattern shown
+
+## Props and Interactions
+
+### Realistic Props
+
+- Use realistic, meaningful text content
+- Provide actual callback functions for interactive props
+- Show proper error handling and state management
+- Include accessibility considerations
+
+### Event Handlers
+
+- Use `console.log` for demonstrating callbacks in development
+- Use `alert()` for simple user-facing demonstrations
+- Show proper event handling patterns
+
+## CSS and Styling
+
+### Layout Classes
+
+- Use Tailwind utility classes for story layouts
+- Common patterns:
+  - `flex flex-wrap gap-2` for badge collections
+  - `flex items-center gap-4` for size comparisons
+  - `space-y-4` for vertical stacking
+  - `relative` positioning for notification badges
+
+### Responsive Considerations
+
+- Ensure stories work across different viewport sizes
+- Use responsive Tailwind classes when needed
+- Test component behavior in Storybook's viewport addon
+
+## TypeScript Integration
+
+### Type Safety
+
+- Always use `StoryObj<typeof meta>` for story typing
+- Ensure args match component prop interface exactly
+- Use proper typing for render functions and callbacks
+
+### Interface Consistency
+
+- Story args should match component props interface
+- Maintain type safety throughout story definitions
+- Use TypeScript features for better developer experience
+
+## Quality Checklist
+
+Before completing a stories file, ensure:
+
+- [ ] All component props are covered in stories
+- [ ] Basic usage patterns are demonstrated
+- [ ] Edge cases and complex scenarios are shown
+- [ ] Interactive features have working callbacks
+- [ ] Documentation is comprehensive and helpful
+- [ ] Stories progress logically from simple to complex
+- [ ] Collection stories show all variants/states
+- [ ] Realistic usage examples are provided
+- [ ] Accessibility considerations are included
+- [ ] Visual consistency across all stories
+
+## Story File Template
+
+```typescript
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+import ComponentName from "./ComponentName";
+
+// Mock components/helpers here
+
+const meta: Meta<typeof ComponentName> = {
+  title: "Design System/ComponentName",
+  component: ComponentName,
+  parameters: {
+    layout: "centered",
+    docs: {
+      description: {
+        component: "Component description here.",
+      },
+    },
+  },
+  tags: ["autodocs"],
+  argTypes: {
+    // All props with proper controls
+  },
+};
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+// Stories in order: Default, Variants, Sizes, Features, Collections, Examples
+```

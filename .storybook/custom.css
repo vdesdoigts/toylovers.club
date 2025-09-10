@@ -1,0 +1,29 @@
+/* Import Poppins font from Google Fonts for Storybook */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+/* Define the font variable that Next.js normally provides */
+:root {
+  --font-poppins: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+/* Custom Storybook styles */
+
+/* Override Storybook's default styling */
+.sb-show-main {
+  background: #fafafa;
+  padding: 2rem;
+}
+
+/* Custom component styles for stories */
+.storybook-custom-wrapper {
+  padding: 2rem;
+  border: 1px dashed #ddd;
+  border-radius: 8px;
+}
+
+/* Dark mode adjustments */
+[data-color-mode="dark"] .storybook-custom-wrapper {
+  border-color: #444;
+  background: #2a2a2a;
+}
