@@ -14,11 +14,11 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL("https://toylovers.club"),
   title: {
-    default: "Toy Lovers | Showcasing Toy Photography Artists Worldwide",
+    default: "Toy Lovers: Toy Photographers Stories",
     template: "%s | Toy Lovers",
   },
   description:
-    "Discover the world's most talented toy photographers through exclusive interviews, stunning galleries, and behind-the-scenes stories. Explore creative toy photography from artists around the globe.",
+    "Discover talented toy photographers through interviews, stunning galleries, and behind-the-scenes stories. Explore creative toy photography from artists around the globe.",
   keywords: [
     "toy photography",
     "toy photographers",
@@ -51,15 +51,15 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://toylovers.club",
     siteName: "Toy Lovers",
-    title: "Toy Lovers | Showcasing Toy Photography Artists Worldwide",
+    title: "Toy Lovers: Toy Photographers Stories",
     description:
-      "Discover the world's most talented toy photographers through exclusive interviews, stunning galleries, and behind-the-scenes stories.",
+      "Discover talented toy photographers through interviews, stunning galleries, and behind-the-scenes stories.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Toy Lovers - Showcasing Toy Photography Artists",
+        alt: "Toy Lovers - Toy Photographers Stories",
         type: "image/jpeg",
       },
     ],
@@ -68,9 +68,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@toylovers",
     creator: "@toylovers",
-    title: "Toy Lovers | Showcasing Toy Photography Artists Worldwide",
+    title: "Toy Lovers: Toy Photographers Stories",
     description:
-      "Discover the world's most talented toy photographers through exclusive interviews, stunning galleries, and behind-the-scenes stories.",
+      "Discover talented toy photographers through interviews, stunning galleries, and behind-the-scenes stories.",
     images: ["/twitter-image.jpg"],
   },
   alternates: {
@@ -106,7 +106,7 @@ export default function RootLayout({
     name: "Toy Lovers",
     url: "https://toylovers.club",
     description:
-      "A platform showcasing talented toy photographers from around the world through exclusive interviews and galleries.",
+      "A platform showcasing talented toy photographers from around the world through interviews and galleries.",
     // sameAs: [
     //   "https://instagram.com/toylovers",
     //   "https://twitter.com/toylovers",
