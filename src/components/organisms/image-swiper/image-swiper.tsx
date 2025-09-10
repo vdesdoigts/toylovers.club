@@ -15,6 +15,7 @@ interface SlideData {
   title: string;
   description?: string;
   alt: string;
+  poster?: string;
 }
 
 interface ImageSwiperProps {
@@ -142,12 +143,23 @@ export function ImageSwiper({ slides, className = "" }: ImageSwiperProps) {
                 } px-2`}
                 style={{ opacity: index > slides.length - 1 ? 0 : 1 }}
               >
-                <img
-                  src={slide.image}
-                  alt={slide.alt}
-                  className="max-h-full w-auto object-contain"
-                  style={{ maxHeight: "50vh" }}
-                />
+                {slide.image.includes(".mp4") ? (
+                  <video
+                    src={slide.image}
+                    controls
+                    playsInline
+                    className="max-h-full w-auto object-contain"
+                    style={{ maxHeight: "50vh" }}
+                    poster={slide.poster}
+                  />
+                ) : (
+                  <img
+                    src={slide.image}
+                    alt={slide.alt}
+                    className="max-h-full w-auto object-contain"
+                    style={{ maxHeight: "50vh" }}
+                  />
+                )}
               </div>
             </SwiperSlide>
           ))}
