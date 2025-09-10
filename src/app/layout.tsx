@@ -1,5 +1,6 @@
 import { LayoutNavigation } from "@/components/organisms/layout-navigation/layout-navigation";
 import { getAllArticles } from "@/lib/mdx";
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
@@ -120,6 +121,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="overflow-x-hidden">
       <head>
+        <Analytics />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="https://toylovers.club" />
 
