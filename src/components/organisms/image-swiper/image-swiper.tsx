@@ -155,7 +155,7 @@ export function ImageSwiper({ slides, className = "" }: ImageSwiperProps) {
                 ) : (
                   <img
                     src={slide.image}
-                    alt={slide.alt}
+                    alt={slide.alt || slide.description}
                     className="max-h-full w-auto object-contain"
                     style={{ maxHeight: "50vh" }}
                   />
