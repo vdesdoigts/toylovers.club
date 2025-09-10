@@ -21,9 +21,14 @@ interface SlideData {
 interface ImageSwiperProps {
   slides: SlideData[];
   className?: string;
+  copyright?: string;
 }
 
-export function ImageSwiper({ slides, className = "" }: ImageSwiperProps) {
+export function ImageSwiper({
+  slides,
+  className = "",
+  copyright,
+}: ImageSwiperProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [swiper, setSwiper] = useState<SwiperType | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -62,7 +67,9 @@ export function ImageSwiper({ slides, className = "" }: ImageSwiperProps) {
             {String(currentSlide + 1).padStart(2)} of{" "}
             {String(slides.length).padStart(2)}
           </div>
-          <p className="text-gray-600 text-sm leading-relaxed">Copyright ©</p>
+          <p className="text-gray-600 text-sm leading-relaxed">
+            Copyright © {copyright}
+          </p>
         </div>
 
         {/* Navigation Buttons */}

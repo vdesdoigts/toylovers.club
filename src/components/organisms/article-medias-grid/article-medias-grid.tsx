@@ -33,7 +33,9 @@ export function ArticleMediasGrid({
             ))}
           </div>
           {copyright && (
-            <p className="text-sm text-gray-500 mt-4">{copyright}</p>
+            <p className="text-sm text-gray-500 mt-4">
+              Copyright © {copyright}
+            </p>
           )}
         </div>
       </div>
