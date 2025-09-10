@@ -7,9 +7,9 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypePrettyCode from "rehype-pretty-code";
 
 export const metadata: Metadata = generateSEOMetadata({
-  title: "Home - Showcasing Toy Photography Artists Worldwide",
+  title: "Toy Lovers: Toy Photographers Stories",
   description:
-    "Discover the world's most talented toy photographers through exclusive interviews, stunning galleries, and behind-the-scenes stories. Latest featured artist and photography showcase.",
+    "Discover talented toy photographers through interviews, stunning galleries, and behind-the-scenes stories. Explore creative toy photography from artists around the globe.",
   url: "/",
   type: "website",
 });
