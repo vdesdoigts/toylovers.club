@@ -8,6 +8,7 @@ export { default as Card } from "./molecules/card/card";
 export { ArticleBlockquote } from "./organisms/article-blockquote/article-blockquote";
 export { ArticleBody } from "./organisms/article-body/article-body";
 export { ArticleHeader } from "./organisms/article-header/article-header";
+export { ArticleImage } from "./organisms/article-image/article-image";
 export { ArticleMediasGrid } from "./organisms/article-medias-grid/article-medias-grid";
 export { ArticleMediasShowcase } from "./organisms/article-medias-showcase/article-medias-showcase";
 export { ArticleSwiper } from "./organisms/article-swiper/article-swiper";

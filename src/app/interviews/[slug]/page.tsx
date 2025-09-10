@@ -1,4 +1,3 @@
-import { TransitionLink } from "@/components/atoms/transition-link/transition-link";
 import { mdxComponents } from "@/components/mdx-components/mdx-components";
 import { getAllArticleSlugs, getArticleBySlug } from "@/lib/mdx";
 import {
@@ -142,9 +141,10 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       </article>
 
       {/* Article Footer */}
-      <footer className="max-w-4xl mx-auto px-4 pb-12">
-        <div className="border-t border-gray-200 pt-8">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <footer className=" w-full xl:max-w-6xl 2xl:max-w-7xl mx-auto mt-12 lg:mt-15 px-4 sm:px-8 xl:px-4">
+        <div className="flex">
+          <div className="flex-shrink-0 w-1/6 hidden xl:block" />
+          <div className="border-t border-gray-200 py-8 max-w-4xl w-full">
             <div className="text-sm text-gray-600">
               Published on{" "}
               {new Date(metadata.publishedAt).toLocaleDateString("en-US", {
@@ -152,7 +152,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                 month: "long",
                 day: "numeric",
               })}
-              {metadata.instagram && (
+              {/* {metadata.instagram && (
                 <>
                   {" "}
                   by{" "}
@@ -165,14 +165,8 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                     @{metadata.instagram}
                   </a>
                 </>
-              )}
+              )} */}
             </div>
-            <TransitionLink
-              href="/"
-              className="text-sm text-blue-600 hover:text-blue-700 font-medium cursor-pointer"
-            >
-              ← Back to home
-            </TransitionLink>
           </div>
         </div>
       </footer>

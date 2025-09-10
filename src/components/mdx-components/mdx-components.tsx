@@ -5,6 +5,7 @@ import { Badge, Button, Card } from "../index";
 import { ArticleBlockquote } from "../organisms/article-blockquote/article-blockquote";
 import { ArticleBody } from "../organisms/article-body/article-body";
 import { ArticleHeader } from "../organisms/article-header/article-header";
+import { ArticleImage } from "../organisms/article-image/article-image";
 import { ArticleMediasGrid } from "../organisms/article-medias-grid/article-medias-grid";
 import { ArticleMediasShowcase } from "../organisms/article-medias-showcase/article-medias-showcase";
 import { ArticleSwiper } from "../organisms/article-swiper/article-swiper";
@@ -25,6 +26,7 @@ export const mdxComponents = {
   ArticleBody,
   ArticleSwiper,
   ArticleHeader,
+  ArticleImage,
 
   // Custom link styling
   a: ({

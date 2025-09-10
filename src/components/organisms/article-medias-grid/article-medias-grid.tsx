@@ -21,7 +21,11 @@ export function ArticleMediasGrid({
       <div className="flex">
         <div className="flex-shrink-0 w-1/6 hidden xl:block" />
         <div className="max-w-4xl w-full">
-          <div className="grid grid-cols-3 grid-rows-2 gap-4">
+          <div
+            className={`grid grid-cols-3 gap-4 ${
+              images.length > 3 ? "grid-rows-2" : "grid-rows-1"
+            }`}
+          >
             {images.map((image, index) => (
               <div key={index} className="relative group overflow-hidden">
                 <img

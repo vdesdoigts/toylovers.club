@@ -62,14 +62,16 @@ body {
 .c-article .c-article-body + .c-article-medias-grid,
 .c-article .c-article-body + .c-article-medias-showcase,
 .c-article .c-article-body + .c-article-swiper,
-.c-article .c-article-body + .c-article-video {
+.c-article .c-article-body + .c-article-video,
+.c-article .c-article-body + .c-article-image {
   margin-top: calc(var(--spacing) * 10);
 }
 
 .c-article .c-article-medias-grid + .c-article-body,
 .c-article .c-article-medias-showcase + .c-article-body,
 .c-article .c-article-swiper + .c-article-body,
-.c-article .c-article-video + .c-article-body {
+.c-article .c-article-video + .c-article-body,
+.c-article .c-article-image + .c-article-body {
   margin-top: calc(var(--spacing) * 16);
 
   @media (min-width: theme("screens.lg")) {
