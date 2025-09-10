@@ -4,7 +4,6 @@ import { InterviewCounter } from "@/components/organisms/interview-counter/inter
 import { NavigationLinks } from "@/components/organisms/navigation-links/navigation-links";
 import type { Article } from "@/lib/mdx";
 import { useViewTransitions } from "@/lib/use-view-transitions";
-import { Menu } from "lucide-react";
 
 interface LayoutNavigationProps {
   articles: Article[];
@@ -15,10 +14,10 @@ export function LayoutNavigation({ articles }: LayoutNavigationProps) {
 
   return (
     <nav className="fixed w-full flex flex-row items-center justify-between top-0 z-50 h-[54px] bg-black view-transition-nav">
-      <div className="h-full flex flex-row items-center text-white">
+      <div className="h-full w-full flex flex-row items-center text-white">
         <button
           onClick={() => transitionTo("/")}
-          className="h-full w-[100px] flex flex-row justify-center items-center border-r border-[#212128] cursor-pointer hover:bg-gray-900 transition-colors"
+          className="h-full w-[60px] md:w-[100px] grow-0 flex flex-row flex-shrink-0 justify-center items-center border-r border-[#212128] cursor-pointer hover:bg-gray-900 transition-colors"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -32,10 +31,10 @@ export function LayoutNavigation({ articles }: LayoutNavigationProps) {
             />
           </svg>
         </button>
-        <div className="h-full w-[54px] flex justify-center items-center cursor-pointer">
+        {/* <div className="h-full w-[54px] flex justify-center items-center cursor-pointer">
           <Menu className="w-6 h-6 text-white" />
-        </div>
-        <div>
+        </div> */}
+        <div className="pl-4">
           <InterviewCounter articles={articles} />
         </div>
       </div>

@@ -64,7 +64,7 @@ export function NavigationLinks({ articles }: NavigationLinksProps) {
     }
   }
   return (
-    <div className="flex flex-row items-center text-xs font-sans text-white/40 uppercase pr-6">
+    <div className="flex flex-row items-center text-xs font-sans text-white/40 uppercase md:pr-6">
       {prevHref ? (
         <button
           onClick={() => transitionTo(prevHref)}
@@ -72,12 +72,12 @@ export function NavigationLinks({ articles }: NavigationLinksProps) {
           className="group flex flex-row items-center gap-1 border-r border-[#212128] px-4 hover:text-white transition-colors duration-300 cursor-pointer"
         >
           <ChevronLeft className="w-5 h-5 text-white group-hover:-translate-x-1 transition-transform duration-300" />
-          Prev
+          <span className="whitespace-nowrap hidden md:inline">Prev</span>
         </button>
       ) : (
         <div className="flex flex-row items-center gap-1 border-r border-[#212128] px-4 opacity-30">
           <ChevronLeft className="w-5 h-5 text-white" />
-          Prev
+          <span className="whitespace-nowrap hidden md:inline">Prev</span>
         </div>
       )}
 
@@ -87,12 +87,12 @@ export function NavigationLinks({ articles }: NavigationLinksProps) {
           onMouseEnter={() => preloadRoute(nextHref)}
           className="group flex flex-row items-center gap-1 px-4 py-2 hover:text-white transition-colors duration-300 cursor-pointer"
         >
-          Next
+          <span className="whitespace-nowrap hidden md:inline">Next</span>
           <ChevronRight className="w-5 h-5 text-white group-hover:translate-x-1 transition-transform duration-300" />
         </button>
       ) : (
         <div className="flex flex-row items-center gap-1 px-4 py-2 opacity-30">
-          Next
+          <span className="whitespace-nowrap hidden md:inline">Next</span>
           <ChevronRight className="w-5 h-5 text-white" />
         </div>
       )}

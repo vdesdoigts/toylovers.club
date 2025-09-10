@@ -17,9 +17,11 @@ export function ArticleHeader({
     >
       <div className="flex">
         <div className="flex-shrink-0 w-1/5 hidden xl:block" />
-        <div className="w-4/5">
+        <div className="md:w-4/5">
           <div className="max-w-4xl">
-            <h1 className="text-4xl lg:text-6xl mb-10 font-sans">{title}</h1>
+            <h1 className="text-4xl lg:text-6xl mb-6 md:mb-10 font-sans">
+              {title}
+            </h1>
           </div>
           <div className="max-w-2xl xl:max-w-3xl text-xl lg:text-3xl">
             {description}

@@ -26,9 +26,12 @@ export function InterviewCounter({ articles }: InterviewCounterProps) {
     : articles[0];
 
   return (
-    <span className="font-sans text-sm">
-      {articles.length + 1 - currentIndex}/{articles.length} interviews{" — "}
-      {currentArticle?.metadata.title && `${currentArticle.metadata.title}`}
+    <span className="font-sans text-sm truncate">
+      {articles.length + 1 - currentIndex}/{articles.length} interviews{" "}
+      <span className="hidden sm:inline-block">
+        {" — "}
+        {currentArticle?.metadata.title && `${currentArticle.metadata.title}`}
+      </span>
     </span>
   );
 }
